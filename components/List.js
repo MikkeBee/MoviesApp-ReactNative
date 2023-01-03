@@ -10,7 +10,7 @@ const propTypes = {
 
 class List extends React.PureComponent {
   render() {
-    const {title, content} = this.props;
+    const {title, content, navigation} = this.props;
     return (
       <View style={styles.list}>
         <View>

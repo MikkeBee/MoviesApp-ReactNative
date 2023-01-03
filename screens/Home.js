@@ -17,10 +17,11 @@ import {
   getFamilyMovies,
   getDocumentaries,
 } from '../services/services';
+import Error from '../components/Error';
 
 const dimensions = Dimensions.get('screen');
 
-const Home = () => {
+const Home = ({navigation}) => {
   console.log(dimensions);
   const [upcomingMovies, setMovieImages] = useState();
   const [popularMovies, setPopularMovies] = useState();
@@ -123,7 +124,11 @@ const Home = () => {
           )}
           {popularMovies && (
             <View style={styles.viewCheck}>
-              <List title="Popular Movies" content={popularMovies} />
+              <List
+                navigation={navigation}
+                title="Popular Movies"
+                content={popularMovies}
+              />
             </View>
           )}
           {popularTV && (
@@ -145,6 +150,7 @@ const Home = () => {
       )}
 
       {!loaded && <ActivityIndicator size="large" />}
+      {error && <Error />}
     </React.Fragment>
   );
 };

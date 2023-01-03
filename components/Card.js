@@ -7,12 +7,11 @@ const placeholderImage = require('../assets/images/placeholder.jpg');
 const propTypes = {
   item: PropTypes.object,
 };
-
 class Card extends React.PureComponent {
   render() {
     const {item} = this.props;
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity onPress={onPress()=>navigation.navigate('Details')} style={styles.container}>
         <Image
           style={styles.image}
           source={
