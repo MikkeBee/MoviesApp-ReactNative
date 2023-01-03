@@ -4,8 +4,8 @@ import Card from './Card';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  item: PropTypes.object,
-  content: PropTypes.object,
+  title: PropTypes.string,
+  content: PropTypes.array,
 };
 
 class List extends React.PureComponent {
