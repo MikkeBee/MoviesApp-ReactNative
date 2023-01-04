@@ -6,6 +6,7 @@ import {
   ScrollView,
   Dimensions,
   ActivityIndicator,
+  View,
 } from 'react-native';
 import {getMovie} from '../services/services';
 
@@ -42,7 +43,20 @@ const Details = ({route, navigation}) => {
                 : placeholderImage
             }
           />
-          <Text>{movieDetail.title}</Text>
+          <View style={styles.container}>
+            <Text style={styles.movieTitle}>{movieDetail.title}</Text>
+            {movieDetail.genres && (
+              <View style={styles.genreContainer}>
+                {movieDetail.genres.map(genre => {
+                  return (
+                    <Text style={styles.genre} key={genre.id}>
+                      {genre.name}
+                    </Text>
+                  );
+                })}
+              </View>
+            )}
+          </View>
         </ScrollView>
       )}
       {!loaded && <ActivityIndicator size="large" />}
@@ -51,8 +65,30 @@ const Details = ({route, navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   image: {
     height: height / 2,
+  },
+  movieTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: 10,
+    textAlign: 'center',
+    padding: 3,
+  },
+  genreContainer: {
+    flexDirection: 'row',
+    alignContent: 'center',
+    marginTop: 20,
+  },
+  genre: {
+    marginRight: 10,
+    fontWeight: 'bold',
   },
 });
 
