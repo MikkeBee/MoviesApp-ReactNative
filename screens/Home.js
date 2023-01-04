@@ -133,16 +133,24 @@ const Home = ({navigation}) => {
           )}
           {popularTV && (
             <View style={styles.viewCheck}>
-              <List title="Popular TV Shows" content={popularTV} />
+              <List
+                navigation={navigation}
+                title="Popular TV Shows"
+                content={popularTV}
+              />
             </View>
           )}
           {familyMovies && (
             <View style={styles.viewCheck}>
-              <List title="Family Movies" content={familyMovies} />
+              <List
+                navigation={navigation}
+                title="Family Movies"
+                content={familyMovies}
+              />
             </View>
           )}
           {documentaries && (
-            <View style={styles.viewCheck}>
+            <View navigation={navigation} style={styles.viewCheck}>
               <List title="Documentaries" content={documentaries} />
             </View>
           )}

@@ -12,13 +12,11 @@ export const getPopularMovies = async () => {
 export const getUpcomingMovies = async () => {
   const resp = await axios.get(`${apiUrl}/movie/upcoming?${apiKey}`);
   return resp.data.results;
-  //resp.data.results[0] returns only the first result to help simplify the data
 };
 
 export const getPopularTV = async () => {
   const resp = await axios.get(`${apiUrl}/tv/popular?${apiKey}`);
   return resp.data.results;
-  //resp.data.results[0] returns only the first result to help simplify the data
 };
 
 export const getFamilyMovies = async () => {
@@ -26,7 +24,6 @@ export const getFamilyMovies = async () => {
     `${apiUrl}/discover/movie?${apiKey}&with_genres=10751`,
   );
   return resp.data.results;
-  //resp.data.results[0] returns only the first result to help simplify the data
 };
 
 export const getDocumentaries = async () => {
@@ -34,5 +31,9 @@ export const getDocumentaries = async () => {
     `${apiUrl}/discover/movie?${apiKey}&with_genres=99`,
   );
   return resp.data.results;
-  //resp.data.results[0] returns only the first result to help simplify the data
+};
+
+export const getMovie = async id => {
+  const resp = await axios.get(`${apiUrl}/movie/${id}?${apiKey}`);
+  return resp.data;
 };
