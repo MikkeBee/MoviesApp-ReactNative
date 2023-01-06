@@ -8,6 +8,8 @@ import {
   ActivityIndicator,
   View,
 } from 'react-native';
+import StarRatingDisplay from 'react-native-star-rating-widget';
+import dateFormat from 'dateformat';
 import {getMovie} from '../services/services';
 
 const placeholderImage = require('../assets/images/placeholder.jpg');
@@ -17,6 +19,7 @@ const Details = ({route, navigation}) => {
   const movieId = route.params.movieId;
   const [movieDetail, setMovieDetail] = useState();
   const [loaded, setLoaded] = useState(false);
+  const [fakeRating, setFakeRating] = useState(0);
 
   useEffect(() => {
     getMovie(movieId).then(movieData => {
@@ -56,6 +59,18 @@ const Details = ({route, navigation}) => {
                 })}
               </View>
             )}
+
+            <StarRatingDisplay
+              maxStars={5}
+              rating={movieDetail.vote_average / 2}
+              onChange={setFakeRating}
+            />
+            {/*empty rating function made as display is not working*/}
+            <Text style={styles.overview}>{movieDetail.overview}</Text>
+            <Text style={styles.release}>
+              {'Release date: ' +
+                dateFormat(movieDetail.release_date, 'mmmm dS, yyyy')}
+            </Text>
           </View>
         </ScrollView>
       )}
@@ -70,6 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   image: {
     height: height / 2,
   },
@@ -85,9 +101,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'center',
     marginTop: 20,
+    marginBottom: 10,
   },
   genre: {
     marginRight: 10,
+    fontWeight: 'bold',
+  },
+  overview: {
+    padding: 10,
+  },
+  release: {
     fontWeight: 'bold',
   },
 });
