@@ -3,6 +3,7 @@
 import React from 'react';
 import Home from './screens/Home';
 import Details from './screens/Details';
+import Navbar from './components/Navbar';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -12,8 +13,19 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{headerTransparent: true}}
+        />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{
+            headerTransparent: false,
+            header: ({navigation}) => <Navbar navigation={navigation} />,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
