@@ -14,7 +14,6 @@ import StarRatingDisplay from 'react-native-star-rating-widget';
 import dateFormat from 'dateformat';
 import {getMovie} from '../services/services';
 import PlayButton from '../components/PlayButton';
-import VideoPlayer from 'react-native-video-controls';
 import Video from '../components/Video';
 
 const placeholderImage = require('../assets/images/placeholder.jpg');

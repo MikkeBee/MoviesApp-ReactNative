@@ -11,6 +11,12 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
+import Colors from '../themes/Colors';
+
+const propTypes = {
+  main: PropTypes.bool,
+};
 
 const defaultProps = {
   main: false,
@@ -32,7 +38,7 @@ const Navbar = ({navigation, main}) => {
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               size={30}
-              color={'white'}
+              color={Colors.white}
             />
           </TouchableOpacity>
         </View>
@@ -42,7 +48,11 @@ const Navbar = ({navigation, main}) => {
             onPress={() => {
               navigation.goBack();
             }}>
-            <FontAwesomeIcon icon={faChevronLeft} size={40} color={'white'} />
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              size={40}
+              color={Colors.lightGray}
+            />
           </TouchableOpacity>
         </View>
       )}
@@ -64,6 +74,7 @@ const styles = StyleSheet.create({
   },
 });
 
+Navbar.propTypes = propTypes;
 Navbar.defaultProps = defaultProps;
 
 export default Navbar;

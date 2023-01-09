@@ -34,8 +34,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: 'bold',
-    paddingBottom: 15,
-    paddingTop: 10,
+    padding: 10,
+    paddingBottom: 6,
+    paddingTop: 30,
   },
 });
 
