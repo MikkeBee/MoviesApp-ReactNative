@@ -16,13 +16,18 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{headerTransparent: true}}
+          options={{
+            headerTransparent: true,
+            header: ({navigation}) => (
+              <Navbar navigation={navigation} main={true} />
+            ),
+          }}
         />
         <Stack.Screen
           name="Details"
           component={Details}
           options={{
-            headerTransparent: false,
+            headerTransparent: true,
             header: ({navigation}) => <Navbar navigation={navigation} />,
           }}
         />
